@@ -1,4 +1,4 @@
-# Puppet manifest to configure the SSH client
+# Configures SSH client to use a private key and refuse password auth
 
 file_line { 'Turn off passwd auth':
   ensure => present,
