@@ -1,5 +1,2 @@
 #!/usr/bin/env bash
-# Connects to the server using the private key located at ~/.ssh/school
-
-# The -i flag is the required single-character flag for the identity file.
-ssh -i ~/.ssh/school ubuntu@35.171.6.152 'exit'
+ssh -i ~/.ssh/school ubuntu@35.171.6.152
