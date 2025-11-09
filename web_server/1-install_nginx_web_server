@@ -1,19 +1,7 @@
 #!/usr/bin/env bash
 # Installs and configures Nginx to serve a simple page
 
-# Update package lists
 apt-get update -y
-
-# 1. Install Nginx
-# This fixes the "Nginx is installed" check
 apt-get install nginx -y
-
-# 2. Create the file with the required content
-# Make sure the path is correct: /var/www/html/index.html
-# This fixes the "contains Holberton School" check
 echo "Holberton School" > /var/www/html/index.html
-
-# 3. Restart Nginx to start the service and load the new file
-# This is the most important step and fixes the "returns 200" check
-# We use 'service' because 'systemctl' is not allowed.
 service nginx restart
