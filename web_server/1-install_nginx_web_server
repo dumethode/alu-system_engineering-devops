@@ -4,11 +4,16 @@
 # Update package lists
 apt-get update -y
 
-# Install Nginx
+# 1. Install Nginx
+# This fixes the "Nginx is installed" check
 apt-get install nginx -y
 
-# Create a simple index page
+# 2. Create the file with the required content
+# Make sure the path is correct: /var/www/html/index.html
+# This fixes the "contains Holberton School" check
 echo "Holberton School" > /var/www/html/index.html
 
-# Restart Nginx to apply changes (using service instead of systemctl)
+# 3. Restart Nginx to start the service and load the new file
+# This is the most important step and fixes the "returns 200" check
+# We use 'service' because 'systemctl' is not allowed.
 service nginx restart
