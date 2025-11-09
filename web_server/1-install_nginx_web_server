@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Installs and configures Nginx to serve a simple page
+
+# Update package lists
+apt-get update -y
+
+# Install Nginx
+apt-get install nginx -y
+
+# Create a simple index page
+echo "Holberton School" > /var/www/html/index.html
+
+# Restart Nginx to apply changes (using service instead of systemctl)
+service nginx restart

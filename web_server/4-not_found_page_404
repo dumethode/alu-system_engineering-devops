@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Installs Nginx, configures a redirect, and adds a custom 404 page
+
+# Update package lists
+apt-get update -y
+
+# Install Nginx
+apt-get install nginx -y
+
+# --- Base page ---
+# Create a simple index page
+echo "Holberton School" > /var/www/html/index.html
+
+# --- Custom 404 page ---
+# Create the custom 404 page
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+
+# --- Nginx Configuration ---
+# Add both redirect and 404 page configurations using sed
+# This finds the 'server {' line and adds all the text in $config_insert after it
+config_insert="\\\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n\n\t# Custom 404 page\n\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}"
+sed -i "/^server {/a $config_insert" /etc/nginx/sites-available/default
+
+# Restart Nginx to apply changes
+service nginx restart
