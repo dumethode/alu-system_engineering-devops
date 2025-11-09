@@ -3,7 +3,9 @@
 
 # Check if 4 arguments are provided
 if [ "$#" -ne 4 ]; then
+    # The error message MUST be exactly this string
     echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+    # You MUST exit with a non-zero status
     exit 1
 fi
 
@@ -14,6 +16,4 @@ USER=$3
 SSH_KEY=$4
 
 # Execute the scp command
-# -o StrictHostKeyChecking=no: Disables SSH host key prompt
-# -i: Specifies the identity file (private key)
 scp -o StrictHostKeyChecking=no -i "$SSH_KEY" "$FILE" "$USER@$IP:~/"
