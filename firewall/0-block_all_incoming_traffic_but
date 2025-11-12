@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Install and configure ufw firewall
+
+# Install ufw
+apt-get update
+apt-get install ufw -y
+
+# Allow incoming TCP ports
+# IMPORTANT: Allow SSH (22) first to avoid lockout!
+ufw allow 22/tcp
+ufw allow 443/tcp
+ufw allow 80/tcp
+
+# Enable the firewall
+# We use 'yes |' to automatically answer "y" to the confirmation prompt
+yes | ufw enable
